@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
+                Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 2f);
                 if (hit.collider.gameObject.name == "Door")
                 {
                     Animator anim = hit.collider.gameObject.GetComponentInParent<Animator>();
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             weapon = true;
         }
-        if (other.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("bullet"))
         {
             Destroy(gameObject);
             SceneManager.LoadScene("Menu");

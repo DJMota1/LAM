@@ -621,7 +621,7 @@ Transform:
   m_GameObject: {fileID: 471165340}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.76, y: 2.87, z: 0}
+  m_LocalPosition: {x: 5.76, y: 3.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1532,7 +1532,7 @@ Transform:
   m_GameObject: {fileID: 1338624208}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.11, y: 2.87, z: 0}
+  m_LocalPosition: {x: 2.11, y: 3.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1671,7 +1671,7 @@ Transform:
   m_GameObject: {fileID: 1546187635}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.06, y: 2.789, z: 13.272}
+  m_LocalPosition: {x: -3.06, y: 3.084, z: 13.272}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1865,7 +1865,7 @@ Transform:
   m_GameObject: {fileID: 1640604860}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.71, y: 2.87, z: -0.05}
+  m_LocalPosition: {x: -2.71, y: 3.71, z: -0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2003,7 +2003,7 @@ Transform:
   m_GameObject: {fileID: 1827082470}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.29, y: 2.87, z: 0}
+  m_LocalPosition: {x: -0.29, y: 3.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2034,7 +2034,7 @@ Transform:
   m_GameObject: {fileID: 1879369100}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.73, y: 2.789, z: 13.272}
+  m_LocalPosition: {x: 5.73, y: 3.183, z: 13.272}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2277,6 +2277,11 @@ MonoBehaviour:
   spawns:
   - {fileID: 1546187636}
   - {fileID: 1879369101}
+  waypoints:
+  - {fileID: 1827082471}
+  - {fileID: 1640604861}
+  - {fileID: 1338624209}
+  - {fileID: 471165341}
   enemy: {fileID: 8604490217649612105, guid: d5c99f0af8ad38141a4a5c63236ef74c, type: 3}
 --- !u!4 &1953022495
 Transform:

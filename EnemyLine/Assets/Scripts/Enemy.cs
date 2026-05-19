@@ -4,63 +4,67 @@ using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
-    public Transform [] waypoints;
+    [HideInInspector]
+    public Transform[] waypoints;
+
     private Transform targetWaypoint;
     private NavMeshAgent agent;
-    private bool isAtWaypoint = false;
+
     private int currentIndex = -1;
 
-    private static HashSet<int> occupiedWaypoints = new HashSet<int>();
+    public static bool[] occupiedWaypoints;
 
-    public float stopDistance = 0.5f;
+    public static bool HasFreeWaypoint()
+{
+    for (int i = 0; i < occupiedWaypoints.Length; i++)
+    {
+        if (!occupiedWaypoints[i])
+            return true;
+    }
+    return false;
+}
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        ChooseFreeWaypoint();
-    }
 
-    void Update()
-    {
-        if (isAtWaypoint || targetWaypoint == null)
-            return;
-
-        if (!agent.pathPending && agent.remainingDistance <= stopDistance)
+        if (occupiedWaypoints == null)
         {
-            isAtWaypoint = true;
-            agent.isStopped = true;
+            occupiedWaypoints = new bool[waypoints.Length];
         }
+
+        ChooseFreeWaypoint();
     }
 
     void ChooseFreeWaypoint()
     {
         List<int> freeIndices = new List<int>();
 
-        for (int i = 0; i < waypoints.Length; i++)
+        for (int i = 0; i < occupiedWaypoints.Length; i++)
         {
-            if (!occupiedWaypoints.Contains(i))
+            if (occupiedWaypoints[i] == false)
+            {
                 freeIndices.Add(i);
+            }
         }
 
-        if (freeIndices.Count == 0)
-        {
-            return;
-        }
+        int chosenIndex =
+            freeIndices[Random.Range(0, freeIndices.Count)];
 
-        int chosenIndex = freeIndices[Random.Range(0, freeIndices.Count)];
-        occupiedWaypoints.Add(chosenIndex);
+        occupiedWaypoints[chosenIndex] = true;
+
         currentIndex = chosenIndex;
 
         targetWaypoint = waypoints[chosenIndex];
+
         agent.SetDestination(targetWaypoint.position);
-        agent.isStopped = false;
-        isAtWaypoint = false;
     }
 
     void OnDestroy()
     {
         if (currentIndex >= 0)
-            occupiedWaypoints.Remove(currentIndex);
+        {
+            occupiedWaypoints[currentIndex] = false;
+        }
     }
 }
-

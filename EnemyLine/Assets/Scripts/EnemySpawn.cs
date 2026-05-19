@@ -3,12 +3,11 @@ using UnityEngine;
 public class EnemySpawn : MonoBehaviour
 {
     public Transform[] spawns;
+    public Transform[] waypoints;
+
     public GameObject enemy;
+
     private float timer = 0f;
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -16,8 +15,22 @@ public class EnemySpawn : MonoBehaviour
 
         if (timer >= 2f)
         {
-            int index = Random.Range(0, spawns.Length);
-            Instantiate(enemy, spawns[index].position, Quaternion.identity);
+            timer = 0f;
+
+            if (!Enemy.HasFreeWaypoint())
+            return;
+
+            int spawnIndex = Random.Range(0, spawns.Length);
+
+            GameObject obj = Instantiate(
+                enemy,
+                spawns[spawnIndex].position,
+                Quaternion.identity
+            );
+
+            Enemy enemyScript = obj.GetComponent<Enemy>();
+
+            enemyScript.waypoints = waypoints;
         }
     }
 }
